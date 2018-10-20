@@ -1,4 +1,4 @@
-let isShowing = false;
+let isShowing = true;
 let isMousedown = false;
 let isSimutating = false;
 
@@ -27,7 +27,9 @@ document.querySelector('.reset_wrap').addEventListener('click', () => {
   redraw();
 });
 document.querySelector('.stop_wrap').addEventListener('click', () => {
-  isRepeat = false;
+  document.querySelector('.time_slider').value = 0;
+  currentYear = parseInt(document.querySelector('.time_slider').value);
+  generateMapConfig();
   redraw();
 });
 document.querySelector('.projection_wrap').addEventListener('click', () => {
