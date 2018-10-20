@@ -1,7 +1,11 @@
+const container = document.getElementById('container1');
 let dataset = {};
 let isRepeat = true;
 let rotateX = 0;
 let rotateY = 0;
+let scaleFactor = 250;
+let translateFactor = [container.offsetWidth / 2, container.offsetHeight / 2];
+
 let projectionType = 'equirectangular'; // mercator / azimuthalEqualArea / equirectangular / orthographic
 
 setInterval(() => {
@@ -45,7 +49,7 @@ function renderMap(dataset) {
       const projection = d3.geo[projectionType]()
         .center([0, 0])
         .rotate([rotateX, rotateY])
-        .scale(250)
+        .scale(scaleFactor)
         .translate([element.offsetWidth / 2, element.offsetHeight / 2]);
 
       const path = d3.geo.path().projection(projection);
@@ -79,32 +83,43 @@ function renderMap(dataset) {
         ].join('');
       },
     },
+
+    done: function() {
+      const drag = d3.behavior.drag().on('drag', function() {
+        var dx = d3.event.dx;
+        var dy = d3.event.dy;
+
+        var rotation = [rotateX, rotateY];
+        var radius = livemap.projection.scale();
+        var scale = d3.scale
+          .linear()
+          .domain([-1 * radius, radius])
+          .range([-90, 90]);
+        var degX = scale(dx);
+        var degY = scale(dy);
+        rotation[0] += degX;
+        rotation[1] -= degY;
+        if (rotation[1] > 90) rotation[1] = 90;
+        if (rotation[1] < -90) rotation[1] = -90;
+
+        if (rotation[0] >= 180) rotation[0] -= 360;
+        [rotateX, rotateY] = [...rotation];
+        redraw();
+      });
+
+      const zoom = d3.behavior.zoom().on('zoom', function() {
+        scaleFactor = scaleFactor * Math.sqrt(d3.event.scale);
+        redraw();
+      });
+      d3.select('#container1')
+        .select('svg')
+        .call(zoom);
+
+      d3.select('#container1')
+        .select('svg')
+        .call(drag);
+    },
   });
-  const drag = d3.behavior.drag().on('drag', function() {
-    var dx = d3.event.dx;
-    var dy = d3.event.dy;
-
-    var rotation = [rotateX, rotateY];
-    var radius = livemap.projection.scale();
-    var scale = d3.scale
-      .linear()
-      .domain([-1 * radius, radius])
-      .range([-90, 90]);
-    var degX = scale(dx);
-    var degY = scale(dy);
-    rotation[0] += degX;
-    rotation[1] -= degY;
-    if (rotation[1] > 90) rotation[1] = 90;
-    if (rotation[1] < -90) rotation[1] = -90;
-
-    if (rotation[0] >= 180) rotation[0] -= 360;
-    [rotateX, rotateY] = [...rotation];
-    redraw();
-  });
-
-  d3.select('#container1')
-    .select('svg')
-    .call(drag);
 }
 
 function redraw() {
