@@ -1,35 +1,43 @@
 const container = document.getElementById('container1');
+const waste_input = document.querySelector('.waste_input');
+const growth_input = document.querySelector('.growth_input');
+const height_input = document.querySelector('.height_input');
+const ratio_input = document.querySelector('.ratio_input');
+
 let dataset = {};
-let isRepeat = true;
+let isRepeat = false;
 let rotateX = 0;
 let rotateY = 0;
 let scaleFactor = 225;
-let translateFactor = [container.offsetWidth / 2, container.offsetHeight / 2];
 let projectionType = 'equirectangular'; // mercator / azimuthalEqualArea / equirectangular / orthographic
-
+let currentYear = parseInt(document.querySelector('.time_slider').value);
 setInterval(() => {
   if (isRepeat) {
-    generateDataset();
+    generateMapConfig();
     redraw();
+    document.querySelector('.time_slider').value =
+      parseInt(document.querySelector('.time_slider').value) + 1;
+    // currentYear += 1;
   }
-  isRepeat = false;
 }, 100);
+generateMapConfig();
+redraw();
 
-function generateDataset() {
-  randomDataset();
-
+function generateMapConfig() {
   const maxValue = Math.max(...series.map((o) => o[1]), 0);
-  const minValue = Math.min(...series.map((o) => o[1]), 0);
 
-  const paletteScale = d3.scale
-    .linear()
-    .domain([minValue, maxValue])
-    .range(['#EFEFFF', '#02386F']);
+  const minValue = Math.min(...series.map((o) => o[1]), 0);
+  console.log({ maxValue, minValue });
 
   series.forEach((item) => {
     let country = item[0];
-    let value = item[1];
-    dataset[country] = { numberOfThings: value, fillColor: paletteScale(value) };
+    let value = item[1] < currentYear ? currentYear : item[1];
+    let remainYear = value - currentYear;
+    // dataset[country] = { numberOfThings: value, fillColor: paletteScale(value) };
+    dataset[country] = {
+      numberOfThings: remainYear,
+      fillColor: `rgba(${(255 * currentYear) / value}, 56, 111, ${remainYear ? 1 : 0})`,
+    };
   });
 }
 
@@ -69,7 +77,7 @@ function renderMap(dataset) {
 
         return `<div class="hoverinfo">
                   <div class = "country_row">${geo.properties.name}</div>
-                  <div class = "value_row">Count: ${data.numberOfThings}</div>
+                  <div class = "value_row">Year remained: ${data.numberOfThings}</div>
                 </div>`;
       },
     },
@@ -117,9 +125,31 @@ function redraw() {
   renderMap(dataset);
 }
 
-function randomDataset() {
+function randomGenerateDataset() {
   series = series.map((obj) => {
     obj[1] = Math.random() * 100;
     return obj;
+  });
+}
+
+function generateDatasetByPara() {
+  console.log('gen');
+  series = defaultData.map((obj) => {
+    let area = obj[2];
+    let height = height_input.value / 100;
+    let weightToVolumn = ratio_input.value;
+    let growthRate = growth_input.value / 100 + 1;
+    let wastePerCapita = obj[3] + parseInt(waste_input.value);
+    let population = obj[1];
+
+    surviveYear = calculateGarbage(
+      area,
+      height,
+      weightToVolumn,
+      growthRate,
+      wastePerCapita,
+      population
+    );
+    return [obj[0], surviveYear];
   });
 }

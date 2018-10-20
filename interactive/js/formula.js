@@ -1,9 +1,9 @@
-function calculateGarbage(area, height, weightToVolumn, growthRate, wastePerCapita, populcation) {
-  return (
+function calculateGarbage(area, height, weightToVolumn, growthRate, wastePerCapita, population) {
+  return Math.floor(
     Math.log(
       1 -
         (area * height * 1000 * 1000 * weightToVolumn * (1 - growthRate)) /
-          (wastePerCapita * populcation)
+          (wastePerCapita * population)
     ) / Math.log(growthRate)
   );
 }

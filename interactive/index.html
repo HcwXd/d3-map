@@ -7,30 +7,30 @@
 </head>
 
 <body>
-    <div class="controller_btn"></div>
+    <div class="controller_btn">≡</div>
     <div class="controller_fixed">
         <div class="controller_wrap">
             <div class="user_input_wrap">
-                <div class="label_row">Waste Change per Person</div>
-                <input type="text" class="input_row" value="0">
+                <div class="label_row">Waste Change per Person (kg/year)</div>
+                <input type="text" class="waste_input input_row" value="0">
             </div>
             <div class="user_input_wrap">
-                <div class="label_row">Population Growth Rate</div>
-                <input type="text" class="input_row" value="0">
+                <div class="label_row">Population Growth Rate (%/year)</div>
+                <input type="text" class="growth_input input_row" value="2">
             </div>
             <div class="user_input_wrap">
-                <div class="label_row">Country Die Height</div>
-                <input type="text" class="input_row" value="0">
+                <div class="label_row">Country Die Height (cm)</div>
+                <input type="text" class="height_input input_row" value="100">
             </div>
             <div class="user_input_wrap">
-                <div class="label_row">Weight to Volume Ratio</div>
-                <input type="text" class="input_row" value="0">
+                <div class="label_row">Weight to Volume Ratio (kg/m³)</div>
+                <input type="text" class="ratio_input input_row" value="300" placeholder="jj">
             </div>
             <div class="user_input_wrap">
                 <div class="simulation_btn">Start Simulation ▶</div>
             </div>
         </div>
-        <input type="range" class="time_slider" min="0" max="200" value="0">
+        <input type="range" class="time_slider" min="0" max="1000" value=0>
         <div class="btn_wrap">
             <div class="reset_wrap btn">R</div>
             <div class="stop_wrap btn">S</div>
@@ -45,6 +45,7 @@
     <script src="js/data.js"></script>
     <script src="js/index.js"></script>
     <script src="js/controller.js"></script>
+    <script src="js/formula.js"></script>
 
 </body>
 
