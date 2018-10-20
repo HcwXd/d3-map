@@ -3,7 +3,7 @@ let dataset = {};
 let isRepeat = true;
 let rotateX = 0;
 let rotateY = 0;
-let scaleFactor = 250;
+let scaleFactor = 225;
 let translateFactor = [container.offsetWidth / 2, container.offsetHeight / 2];
 let projectionType = 'equirectangular'; // mercator / azimuthalEqualArea / equirectangular / orthographic
 
@@ -18,11 +18,8 @@ setInterval(() => {
 function generateDataset() {
   randomDataset();
 
-  const onlyValues = series.map(function(obj) {
-    return obj[1];
-  });
-  const minValue = Math.min.apply(null, onlyValues);
-  const maxValue = Math.max.apply(null, onlyValues);
+  const maxValue = Math.max(...series.map((o) => o[1]), 0);
+  const minValue = Math.min(...series.map((o) => o[1]), 0);
 
   const paletteScale = d3.scale
     .linear()
@@ -70,16 +67,10 @@ function renderMap(dataset) {
           return;
         }
 
-        return [
-          '<div class="hoverinfo">',
-          '<strong>',
-          geo.properties.name,
-          '</strong>',
-          '<br>Count: <strong>',
-          data.numberOfThings,
-          '</strong>',
-          '</div>',
-        ].join('');
+        return `<div class="hoverinfo">
+                  <div class = "country_row">${geo.properties.name}</div>
+                  <div class = "value_row">Count: ${data.numberOfThings}</div>
+                </div>`;
       },
     },
 

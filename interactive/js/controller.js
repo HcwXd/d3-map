@@ -18,7 +18,8 @@ controller_btn.addEventListener('click', () => {
 });
 
 document.querySelector('.reset_wrap').addEventListener('click', () => {
-  scaleFactor = 250;
+  scaleFactor = 225;
+  rotateY = 0;
   redraw();
 });
 document.querySelector('.stop_wrap').addEventListener('click', () => {

@@ -10,7 +10,7 @@ html, body {
 
 #container1 {
   border: 1px solid blue;
-  max-height: 700px;
+  max-height: 600px;
   cursor: move; }
 
 .controller_btn {
@@ -65,5 +65,15 @@ html, body {
     top: 50%;
     transform: translateY(-50%);
     left: 100%; }
+
+.hoverinfo {
+  padding: 6px; }
+  .hoverinfo .country_row {
+    padding: 6px;
+    font-size: 24px;
+    font-weight: bold; }
+  .hoverinfo .value_row {
+    padding: 6px;
+    font-size: 18px; }
 
 /*# sourceMappingURL=style.css.map */
