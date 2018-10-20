@@ -1,68 +1,77 @@
-// example data from server
+let dataset = {};
+let opacity = 0;
+let isRepeat = true;
+let rotateX = 0;
 
-// Datamaps expect data in format:
-// {"USA": { "fillColor": "#42a844", numberOfWhatever: 75},
-//   "FRA": {"fillColor": "#8dc386", numberOfWhatever: 43} }
-var dataset = {};
+setInterval(() => {
+  if (isRepeat) {
+    IterateDataset();
+    renderMap(dataset, 'equirectangular');
+  }
+  // isRepeat = false;
+}, 100);
 
-// We need to colorize every country based on "numberOfWhatever"
-// colors should be uniq for every value.
-// For this purpose we create palette(using min/max series-value)
-var onlyValues = series.map(function(obj) {
-  return obj[1];
-});
-var minValue = Math.min.apply(null, onlyValues);
-var maxValue = Math.max.apply(null, onlyValues);
+function IterateDataset() {
+  randomDataset();
 
-// create color palette function
-// color can be whatever you wish
-var paletteScale = d3.scale
-  .linear()
-  .domain([minValue, maxValue])
-  .range(['#EFEFFF', '#02386F']);
+  var onlyValues = series.map(function(obj) {
+    return obj[1];
+  });
+  var minValue = Math.min.apply(null, onlyValues);
+  var maxValue = Math.max.apply(null, onlyValues);
 
-// fill dataset in appropriate format
-series.forEach(function(item) {
-  // item example value ["USA", 70]
-  var iso = item[0];
-  var value = item[1];
-  dataset[iso] = { numberOfThings: value, fillColor: paletteScale(value) };
-});
-// render map
+  var paletteScale = d3.scale
+    .linear()
+    .domain([minValue, maxValue])
+    .range(['#EFEFFF', '#02386F']);
 
-const renderMap = (dataset) => {
+  series.forEach((item) => {
+    let country = item[0];
+    let value = item[1];
+    dataset[country] = { numberOfThings: value, fillColor: paletteScale(value) };
+    // dataset[country] = { numberOfThings: value, fillColor: `rgba(255, 0, 0, ${opacity})` };
+  });
+  opacity += 0.01;
+}
+
+function renderMap(dataset, projection) {
   document.getElementById('container1').innerHTML = '';
   new Datamap({
     element: document.getElementById('container1'),
-    projection: 'mercator', // big world map
+    projection: projection, // mercator / azimuthalEqualArea / equirectangular / orthographic
     responsive: true,
 
-    // countries don't listed in dataset will be painted with this color
     fills: { defaultFill: '#F5F5F5' },
     data: dataset,
+
+    setProjection: function(element) {
+      var projection = d3.geo
+        .equirectangular()
+        .center([0, 0])
+        .rotate([rotateX, 0])
+        .scale(250)
+        .translate([element.offsetWidth / 2, element.offsetHeight / 2]);
+
+      var path = d3.geo.path().projection(projection);
+      rotateX += 1;
+      return { path: path, projection: projection };
+    },
+
     geographyConfig: {
       borderColor: '#DEDEDE',
       highlightBorderWidth: 2.5,
 
-      // don't change color on mouse hover
       highlightFillColor: function(geo) {
         return geo['fillColor'] || '#F5F5F5';
       },
 
-      // only change border
       highlightBorderColor: '#B7B7B7',
 
-      // show desired information in tooltip
       popupTemplate: function(geo, data) {
-        // don't show tooltip if country don't present in dataset
         if (!data) {
           return;
         }
-        console.clear();
-        console.log(geo);
-        console.log(data);
 
-        // tooltip content
         return [
           '<div class="hoverinfo">',
           '<strong>',
@@ -76,44 +85,11 @@ const renderMap = (dataset) => {
       },
     },
   });
-};
-renderMap(dataset);
-setInterval(() => {
-  IterateDataset();
-  renderMap(dataset);
-  console.log('Again');
-}, 1000);
+}
 
-const IterateDataset = () => {
-  // We need to colorize every country based on "numberOfWhatever"
-  // colors should be uniq for every value.
-  // For this purpose we create palette(using min/max series-value)
-
+function randomDataset() {
   series = series.map((obj) => {
     obj[1] = Math.random() * 100;
     return obj;
   });
-
-  var onlyValues = series.map(function(obj) {
-    return obj[1];
-  });
-  var minValue = Math.min.apply(null, onlyValues);
-  var maxValue = Math.max.apply(null, onlyValues);
-
-  // create color palette function
-  // color can be whatever you wish
-  var paletteScale = d3.scale
-    .linear()
-    .domain([minValue, maxValue])
-    .range(['#EFEFFF', '#02386F']);
-
-  // fill dataset in appropriate format
-  series.forEach(function(item) {
-    // item example value ["USA", 70]
-    var iso = item[0];
-    var value = item[1];
-    dataset[iso] = { numberOfThings: value, fillColor: paletteScale(value) };
-  });
-};
-
-const randomValue = () => {};
+}
