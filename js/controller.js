@@ -43,7 +43,6 @@ time_slider.addEventListener('mousedown', () => (isMousedown = true));
 time_slider.addEventListener('mouseup', () => (isMousedown = false));
 
 function updateMapBySlider() {
-  console.log('range');
   currentYear = parseInt(document.querySelector('.time_slider').value);
   document.querySelector('.year_display').innerHTML = `${currentYear} year`;
   if (isMousedown) {
