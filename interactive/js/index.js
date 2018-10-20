@@ -11,15 +11,18 @@ let rotateY = 0;
 let scaleFactor = 225;
 let projectionType = 'equirectangular'; // mercator / azimuthalEqualArea / equirectangular / orthographic
 let currentYear = parseInt(document.querySelector('.time_slider').value);
+let playbackRate = 100;
+
 setInterval(() => {
   if (isRepeat) {
     generateMapConfig();
     redraw();
     document.querySelector('.time_slider').value =
       parseInt(document.querySelector('.time_slider').value) + 1;
-    // currentYear += 1;
+    currentYear += 1;
+    document.querySelector('.year_display').innerHTML = `${currentYear} year`;
   }
-}, 100);
+}, playbackRate);
 generateMapConfig();
 redraw();
 
@@ -33,7 +36,6 @@ function generateMapConfig() {
     let country = item[0];
     let value = item[1] < currentYear ? currentYear : item[1];
     let remainYear = value - currentYear;
-    // dataset[country] = { numberOfThings: value, fillColor: paletteScale(value) };
     dataset[country] = {
       numberOfThings: remainYear,
       fillColor: `rgba(${(255 * currentYear) / value}, 56, 111, ${remainYear ? 1 : 0})`,
