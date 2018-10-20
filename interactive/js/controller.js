@@ -9,10 +9,10 @@ controller_btn.addEventListener('click', () => {
   if (isShowing) {
     controller_btn.style.opacity = 1;
     controller_wrap.style.opacity = 0;
-    controller_wrap.style.transform = 'translateY(0%)';
+    controller_wrap.style.transform = 'translateX(0%)';
   } else {
     controller_wrap.style.opacity = 1;
-    controller_wrap.style.transform = 'translateY(calc( -100% - 15px )';
+    controller_wrap.style.transform = 'translateX(calc( 100% + 15px )';
   }
   isShowing = !isShowing;
 });
