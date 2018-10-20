@@ -7,8 +7,8 @@ html, body
 	padding: 0
 	height: 700px
 	width: 100%
+	color: rgba(26 ,26 ,26 ,1)
 #container1
-	border: 1px solid blue
 	max-height: 600px
 	cursor: move
 .controller_btn
@@ -44,7 +44,7 @@ html, body
 		width: 250px
 		border-radius: 5px
 		z-index: 1000
-		background-color: rgba(242,242,242,0.9)
+		background-color: rgba(242,242,242,0.95)
 		box-shadow: 0px 0px 50px rgba(black, 0.6)
 		transition-duration: 0.5s		
 		.user_input_wrap
@@ -57,6 +57,17 @@ html, body
 			.input_row
 				margin-top: 10px
 				padding: 5px
+				background: transparent
+				border: 1px solid rgba(60,60,60,1)
+				outline: none
+			.simulation_btn
+				margin-top: 30px
+				background-color: mediumseagreen
+				border-radius: 15px	
+				cursor: pointer
+				padding: 15px
+				width: 150px
+				color: rgba(26,26,26,1)
 	.time_slider
 		width: 1000px
 		position: absolute
@@ -73,7 +84,6 @@ html, body
 		top: 50%
 		transform: translateY(-50%)
 		left: 1200px
-		border: 1px solid #000
 		.btn
 			display: flex
 			align-items: center
@@ -82,6 +92,7 @@ html, body
 			width: 40px
 			border-radius: 100%
 			background-color: rgba(60,60,60,1)
+			color: rgba(190,190,190,1)
 			cursor: pointer
 
 .hoverinfo

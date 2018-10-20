@@ -6,10 +6,10 @@ html, body {
   margin: 0;
   padding: 0;
   height: 700px;
-  width: 100%; }
+  width: 100%;
+  color: #1a1a1a; }
 
 #container1 {
-  border: 1px solid blue;
   max-height: 600px;
   cursor: move; }
 
@@ -47,7 +47,7 @@ html, body {
     width: 250px;
     border-radius: 5px;
     z-index: 1000;
-    background-color: rgba(242, 242, 242, 0.9);
+    background-color: rgba(242, 242, 242, 0.95);
     box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.6);
     transition-duration: 0.5s; }
     .controller_fixed .controller_wrap .user_input_wrap {
@@ -59,7 +59,18 @@ html, body {
         padding: 5px; }
       .controller_fixed .controller_wrap .user_input_wrap .input_row {
         margin-top: 10px;
-        padding: 5px; }
+        padding: 5px;
+        background: transparent;
+        border: 1px solid #3c3c3c;
+        outline: none; }
+      .controller_fixed .controller_wrap .user_input_wrap .simulation_btn {
+        margin-top: 30px;
+        background-color: mediumseagreen;
+        border-radius: 15px;
+        cursor: pointer;
+        padding: 15px;
+        width: 150px;
+        color: #1a1a1a; }
   .controller_fixed .time_slider {
     width: 1000px;
     position: absolute;
@@ -75,8 +86,7 @@ html, body {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    left: 1200px;
-    border: 1px solid #000; }
+    left: 1200px; }
     .controller_fixed .btn_wrap .btn {
       display: flex;
       align-items: center;
@@ -85,6 +95,7 @@ html, body {
       width: 40px;
       border-radius: 100%;
       background-color: #3c3c3c;
+      color: #bebebe;
       cursor: pointer; }
 
 .hoverinfo {
