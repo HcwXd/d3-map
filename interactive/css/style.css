@@ -58,5 +58,12 @@ html, body {
       border-radius: 100%;
       background-color: #3c3c3c;
       cursor: pointer; }
+  .controller_fixed .time_slider {
+    width: 500px;
+    position: absolute;
+    display: block;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 100%; }
 
 /*# sourceMappingURL=style.css.map */

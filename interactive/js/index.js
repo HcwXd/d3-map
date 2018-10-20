@@ -5,13 +5,12 @@ let rotateX = 0;
 let rotateY = 0;
 let scaleFactor = 250;
 let translateFactor = [container.offsetWidth / 2, container.offsetHeight / 2];
-
 let projectionType = 'equirectangular'; // mercator / azimuthalEqualArea / equirectangular / orthographic
 
 setInterval(() => {
   if (isRepeat) {
     generateDataset();
-    renderMap(dataset);
+    redraw();
   }
   isRepeat = false;
 }, 100);
