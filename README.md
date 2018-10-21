@@ -1,4 +1,4 @@
-# d3-map
+# When Will The Waste Kill You?
 
 > [Demo page](https://hcwxd.github.io/garbage-accumulation-worldmap/index.html)
 
