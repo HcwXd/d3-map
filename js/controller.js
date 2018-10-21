@@ -68,3 +68,12 @@ function startSimulation() {
   isSimutating = !isSimutating;
   isRepeat = !isRepeat;
 }
+
+document.querySelectorAll('.hover_info').forEach((el) => {
+  el.addEventListener('mouseenter', function() {
+    this.querySelector('.hover_text').style.opacity = '1';
+  });
+  el.addEventListener('mouseout', function() {
+    this.querySelector('.hover_text').style.opacity = '0';
+  });
+});
