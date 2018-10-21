@@ -29,6 +29,8 @@ document.querySelector('.reset_wrap').addEventListener('click', () => {
 document.querySelector('.stop_wrap').addEventListener('click', () => {
   document.querySelector('.time_slider').value = 0;
   currentYear = parseInt(document.querySelector('.time_slider').value);
+  document.querySelector('.year_display').innerHTML = `${currentYear} year`;
+  generateDatasetByPara();
   generateMapConfig();
   redraw();
 });
