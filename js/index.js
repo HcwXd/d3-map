@@ -23,6 +23,7 @@ setInterval(() => {
     document.querySelector('.year_display').innerHTML = `${currentYear} year`;
   }
 }, playbackRate);
+generateDatasetByPara();
 generateMapConfig();
 redraw();
 
