@@ -70,8 +70,11 @@ html, body {
       padding: 5px;
       margin-left: 15px; }
       .controller_fixed .controller_wrap .user_input_wrap .label_row {
+        display: flex;
         margin-top: 15px;
         padding: 5px; }
+        .controller_fixed .controller_wrap .user_input_wrap .label_row .label_text {
+          margin-right: 5px; }
       .controller_fixed .controller_wrap .user_input_wrap .input_row {
         margin-top: 10px;
         padding: 5px;
@@ -130,7 +133,21 @@ html, body {
   opacity: 0;
   position: absolute;
   width: max-content;
-  top: -25px;
-  display: block; }
+  top: -30px;
+  display: block;
+  color: #bebebe; }
+
+.long_hover_text {
+  background-color: #fff;
+  width: 200px;
+  color: #1a1a1a;
+  background-color: #fafafa;
+  right: -200px;
+  padding: 6px;
+  border-radius: 5px; }
+
+.title {
+  font-size: 20px;
+  font-weight: bold; }
 
 /*# sourceMappingURL=style.css.map */

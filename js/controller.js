@@ -71,9 +71,9 @@ function startSimulation() {
 
 document.querySelectorAll('.hover_info').forEach((el) => {
   el.addEventListener('mouseenter', function() {
-    this.querySelector('.hover_text').style.opacity = '1';
+    document.querySelector(`[data-show='${this.dataset.hover}']`).style.opacity = '1';
   });
   el.addEventListener('mouseout', function() {
-    this.querySelector('.hover_text').style.opacity = '0';
+    document.querySelector(`[data-show='${this.dataset.hover}']`).style.opacity = '0';
   });
 });
