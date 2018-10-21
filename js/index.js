@@ -38,7 +38,9 @@ function generateMapConfig() {
     let remainYear = value - currentYear;
     dataset[country] = {
       numberOfThings: remainYear,
-      fillColor: `rgba(${(255 * currentYear) / value}, 56, 111, ${remainYear ? 1 : 0})`,
+      fillColor: `rgba(${(255 * currentYear) / value}, 30, ${(60 * remainYear) / value}, ${
+        remainYear ? 1 : 0
+      })`,
     };
   });
 }
