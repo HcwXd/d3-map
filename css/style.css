@@ -53,8 +53,6 @@ html, body {
     top: -100vh;
     padding-top: 90px;
     left: -400px;
-    opacity: 1;
-    transform: translateX(calc( 100% + 15px ));
     display: flex;
     flex-direction: column;
     margin-top: 0px;

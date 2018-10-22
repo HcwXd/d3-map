@@ -1,4 +1,4 @@
-let isShowing = true;
+let isShowing = false;
 let isMousedown = false;
 let isSimutating = false;
 
@@ -8,6 +8,9 @@ const time_slider = document.querySelector('.time_slider');
 const simulation_btn = document.querySelector('.simulation_btn');
 document.querySelector('.landing_confirm_btn').addEventListener('click', () => {
   document.querySelector('.landing_info').style.display = 'none';
+  let isShowing = true;
+  controller_wrap.style.opacity = 1;
+  controller_wrap.style.transform = 'translateX(calc( 100% + 15px )';
 });
 
 controller_btn.addEventListener('click', () => {
