@@ -142,3 +142,31 @@ html, body
 .title
 	font-size: 20px
 	font-weight: bold
+
+.landing_info
+	position: fixed
+	top: 50%
+	left: 50%
+	border-radius: 15px
+	transform: translate(-50%,-50%)
+	background-color: rgba(250,250,250,1)
+	padding: 15px 25px 25px 25px
+	z-index: 1005
+	// width: 400px
+	display: flex
+	flex-direction: column
+	align-items: center
+	transition-duration: 0.5s
+	.landing_title	
+		font-weight: normal	
+	.landing_desc
+		font-size: 18px
+		line-height: 30px
+	.landing_confirm_btn
+		font-size: 18px
+		background-color: mediumseagreen
+		cursor: pointer
+		padding: 10px
+		border-radius: 5px
+		&:hover
+			background-color: rgba(mediumseagreen , 0.7)

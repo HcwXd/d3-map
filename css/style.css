@@ -150,4 +150,31 @@ html, body {
   font-size: 20px;
   font-weight: bold; }
 
+.landing_info {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  border-radius: 15px;
+  transform: translate(-50%, -50%);
+  background-color: #fafafa;
+  padding: 15px 25px 25px 25px;
+  z-index: 1005;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition-duration: 0.5s; }
+  .landing_info .landing_title {
+    font-weight: normal; }
+  .landing_info .landing_desc {
+    font-size: 18px;
+    line-height: 30px; }
+  .landing_info .landing_confirm_btn {
+    font-size: 18px;
+    background-color: mediumseagreen;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 5px; }
+    .landing_info .landing_confirm_btn:hover {
+      background-color: rgba(60, 179, 113, 0.7); }
+
 /*# sourceMappingURL=style.css.map */

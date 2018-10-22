@@ -6,6 +6,9 @@ const controller_btn = document.querySelector('.controller_btn');
 const controller_wrap = document.querySelector('.controller_wrap');
 const time_slider = document.querySelector('.time_slider');
 const simulation_btn = document.querySelector('.simulation_btn');
+document.querySelector('.landing_confirm_btn').addEventListener('click', () => {
+  document.querySelector('.landing_info').style.display = 'none';
+});
 
 controller_btn.addEventListener('click', () => {
   if (isShowing) {
