@@ -1,6 +1,6 @@
 # When Will The Waste Kill You?
 
-> [Demo page](https://hcwxd.bitbucket.io/)
+> [Demo page @bitbucket](https://hcwxd.bitbucket.io/) [Demo page @github](https://hcwxd.github.io/garbage-accumulation-worldmap/index.html)
 
 ### Data source:
 
