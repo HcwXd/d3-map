@@ -9,7 +9,7 @@ let isRepeat = false;
 let rotateX = 0;
 let rotateY = 0;
 let scaleFactor = 225;
-let projectionType = 'equirectangular'; // mercator / azimuthalEqualArea / equirectangular / orthographic
+let projectionType = 'orthographic'; // mercator / azimuthalEqualArea / equirectangular / orthographic
 let currentYear = parseInt(document.querySelector('.time_slider').value);
 let playbackRate = 50;
 

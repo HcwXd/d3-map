@@ -1,103 +1,97 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <link rel="stylesheet" href="css/style.css" />
+    <title>When will the waste kill you?</title>
+  </head>
 
-<head>
-    <link rel="stylesheet" href="css/style.css">
-    <title>When will the waste kill you?
-    </title>
-</head>
-
-<body>
+  <body>
     <div class="landing_info">
-        <h1 class="landing_title">When Will The Waste Kill You?</h1>
-        <div class="landing_desc">
-            People dump a massive 2 billion tons of garbage every year. However, it’s hard for us to realize
-            how severe this problem is.<br>
-            We try to help people understand the problem by making this game. The game visualize how long will the
-            garbage
-            we dump can eventually
-            cover the whole area of your country with certain given height.<br>
-            You can adjust the four parameter on the left side to simulate different outcome. And also, you can switch
-            between two differnet mode to view our planet by a simple click on the p button.
-        </div>
-        <div class="landing_confirm_btn">Let's play!</div>
+      <h1 class="landing_title">When Will The Waste Kill You?</h1>
+      <div class="landing_desc">
+        People dump a massive 2 billion tons of garbage every year. However, it’s hard for us to
+        realize how severe this problem is.<br />
+        We try to help people understand the problem by making this game. The game visualize how
+        long will the garbage we dump can eventually cover the whole area of your country with
+        certain given height.<br />
+        You can adjust the four parameter on the left side to simulate different outcome. And also,
+        you can switch between two differnet mode to view our planet by a simple click on the p
+        button.
+      </div>
+      <div class="landing_confirm_btn">Let's play!</div>
     </div>
     <div class="dashboard">
-        <div class="year_display">0 year</div>
+      <div class="year_display">0 year</div>
     </div>
     <div class="controller_btn">≡</div>
     <div class="controller_fixed">
-        <div class="controller_wrap">
-            <div class="user_input_wrap title">When Will The Waste Kill You?
+      <div class="controller_wrap">
+        <div class="user_input_wrap title">When Will The Waste Kill You?</div>
+        <div class="user_input_wrap">
+          <div class="label_row">
+            <div class="label_text">Waste Change per Person (kg/year)</div>
+            <div class="hover_info" data-hover="waste">ⓘ</div>
+            <div class="hover_text long_hover_text" data-show="waste">
+              How much waste do people increase or decrease annually.
             </div>
-            <div class="user_input_wrap">
-                <div class="label_row">
-                    <div class="label_text">Waste Change per Person (kg/year)</div>
-                    <div class="hover_info" data-hover="waste"> ⓘ
-                    </div>
-                    <div class="hover_text long_hover_text" data-show="waste">How much waste do people increase or
-                        decrease annually.</div>
-                </div>
-                <input type="text" class="waste_input input_row" value="0">
-            </div>
-            <div class="user_input_wrap">
-                <div class="label_row">
-                    <div class="label_text">Waste Growth Rate (%/year)</div>
-                    <div class="hover_info" data-hover="growth"> ⓘ
-                    </div>
-                    <div class="hover_text long_hover_text" data-show="growth">How fast the waste accumulation grow
-                        annually</div>
-                </div>
-                <input type="text" class="growth_input input_row" value="2">
-            </div>
-            <div class="user_input_wrap">
-                <div class="label_row">
-                    <div class="label_text">Country Death Height (cm)</div>
-                    <div class="hover_info" data-hover="height"> ⓘ
-                    </div>
-                    <div class="hover_text long_hover_text" data-show="height">The height that defines a country's
-                        death.<br>
-                        In default example, a country is consider to be "dead" when the whole area of country is
-                        covered by waste with 100cm height.</div>
-                </div>
-                <input type="text" class="height_input input_row" value="100">
-            </div>
-            <div class="user_input_wrap">
-                <div class="label_row">
-                    <div class="label_text">Weight to Volume Ratio (kg/m³)</div>
-                    <div class="hover_info" data-hover="weight"> ⓘ
-                    </div>
-                    <div class="hover_text long_hover_text" data-show="weight">The conversion rate between waste
-                        weight and volume.<br>
-                        In other words, it defines
-                        the density of waste.</div>
-                </div>
-                <input type="text" class="ratio_input input_row" value="300" placeholder="jj">
-            </div>
-            <div class="user_input_wrap">
-                <div class="simulation_btn">Start Simulation ▶</div>
-            </div>
+          </div>
+          <input type="text" class="waste_input input_row" value="0" />
         </div>
-        <input type="range" class="time_slider" min="0" max="1000" value=0>
-        <div class="btn_wrap">
-            <div class="reset_wrap btn hover_info" data-hover="reset_wrap">A </div>
-            <div class="hover_text" data-show="reset_wrap">Adjust view to standard angle</div>
-            <div class="stop_wrap btn hover_info" data-hover="stop_wrap">R </div>
-            <div class="hover_text" data-show="stop_wrap">Reset simulation and apply new parameter</div>
-            <div class="projection_wrap btn hover_info" data-hover="projection_wrap">P </div>
-            <div class="hover_text" data-show="projection_wrap">Change projection way</div>
+        <div class="user_input_wrap">
+          <div class="label_row">
+            <div class="label_text">Waste Growth Rate (%/year)</div>
+            <div class="hover_info" data-hover="growth">ⓘ</div>
+            <div class="hover_text long_hover_text" data-show="growth">
+              How fast the waste accumulation grow annually
+            </div>
+          </div>
+          <input type="text" class="growth_input input_row" value="2" />
         </div>
+        <div class="user_input_wrap">
+          <div class="label_row">
+            <div class="label_text">Country Death Height (cm)</div>
+            <div class="hover_info" data-hover="height">ⓘ</div>
+            <div class="hover_text long_hover_text" data-show="height">
+              The height that defines a country's death.<br />
+              In default example, a country is consider to be "dead" when the whole area of country
+              is covered by waste with 100cm height.
+            </div>
+          </div>
+          <input type="text" class="height_input input_row" value="100" />
+        </div>
+        <div class="user_input_wrap">
+          <div class="label_row">
+            <div class="label_text">Weight to Volume Ratio (kg/m³)</div>
+            <div class="hover_info" data-hover="weight">ⓘ</div>
+            <div class="hover_text long_hover_text" data-show="weight">
+              The conversion rate between waste weight and volume.<br />
+              In other words, it defines the density of waste.
+            </div>
+          </div>
+          <input type="text" class="ratio_input input_row" value="300" placeholder="jj" />
+        </div>
+        <div class="user_input_wrap">
+          <div class="simulation_btn">Start Simulation ▶</div>
+        </div>
+      </div>
+      <input type="range" class="time_slider" min="0" max="1000" value="0" />
+      <div class="btn_wrap">
+        <div class="reset_wrap btn hover_info" data-hover="reset_wrap">A</div>
+        <div class="hover_text" data-show="reset_wrap">Adjust view to standard angle</div>
+        <div class="stop_wrap btn hover_info" data-hover="stop_wrap">R</div>
+        <div class="hover_text" data-show="stop_wrap">Reset simulation and apply new parameter</div>
+        <div class="projection_wrap btn hover_info" data-hover="projection_wrap">P</div>
+        <div class="hover_text" data-show="projection_wrap">Change projection way</div>
+      </div>
     </div>
 
     <div id="container1"></div>
     <script src="js/formula.js"></script>
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.3/d3.min.js'></script>
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/topojson/1.6.9/topojson.min.js'></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.3/d3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/1.6.9/topojson.min.js"></script>
     <script src="js/datamaps.world.js"></script>
     <script src="js/data.js"></script>
     <script src="js/index.js"></script>
     <script src="js/controller.js"></script>
-
-</body>
-
+  </body>
 </html>
